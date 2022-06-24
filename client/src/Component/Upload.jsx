@@ -1,11 +1,8 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React from "react";
 
-const B = ({ contentList, setContentList, setContent, content }) => {
-  useEffect(() => {
-    alert("content Uploaded!");
-  }, [contentList]);
+const B = ({ setContentList, setContent, content }) => {
   return (
     <form
       style={{
