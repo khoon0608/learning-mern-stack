@@ -5,9 +5,10 @@ const { default: mongoose } = require("mongoose");
 const postSchema = new mongoose.Schema(
   {
     title: String,
-    content: String,
+    body: String,
+    postNum: Number
   },
-  { collation: "Posts" }
+  { collection: "posts" }
 );
 
 const Post = mongoose.model("Post", postSchema);
