@@ -3,12 +3,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ImageUpload from "./ImageUpload";
 
 const Upload = () => {
   const [post, setPost] = useState({
     title: "",
     body: "",
   });
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,7 +34,11 @@ const Upload = () => {
       alert("제목과 글을 모두 적어주세요");
       return;
     }
-    let body = post;
+    let body = {
+      title: post.title,
+      body: post.body,
+      image: image,
+    };
     axios
       .post("/api/post/submit", body)
       .then((res) => {
@@ -64,6 +70,7 @@ const Upload = () => {
         style={{ width: "300px" }}
         onChange={(e) => handleChange(e)}
       />
+      <ImageUpload setImage={setImage} />
       <textarea
         name='post-body'
         cols='30'
